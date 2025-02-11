@@ -34,7 +34,7 @@ jobs:
       - name: Run Tests (Skip if No Tests)
         run: npm test || echo "No tests found, skipping..."
 
-      - name: Build Project
+      - name: Build Project (Vite)
         run: npm run build
 
   docker:
