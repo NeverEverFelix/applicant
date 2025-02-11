@@ -9,6 +9,6 @@
     "globals": "^15.14.0"
   },
   "scripts": {
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . "
   }
 }
