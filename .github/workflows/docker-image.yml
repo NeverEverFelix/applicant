@@ -35,7 +35,7 @@ jobs:
         run: npm test || echo "No tests found, skipping..."
 
       - name: Build Project (Vite)
-        run:  npx vite build
+        run:  cd my-app && npx vite build
 
   docker:
     needs: build-test
