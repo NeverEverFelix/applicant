@@ -9,6 +9,7 @@
     "globals": "^15.14.0"
   },
   "scripts": {
-    "lint": "eslint . "
+    "lint": "eslint . ",
+    "build": "react-scripts build"
   }
 }
