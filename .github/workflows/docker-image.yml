@@ -53,8 +53,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Build Docker Image
         run: |
-          docker build -t nevereverfelix/yourapp:latest -f my-app/Dockerfile my-app
-          docker tag nevereverfelix/yourapp:latest nevereverfelix/yourapp:${{ github.sha }}
+          docker build -t nevereverfelix/my-vite-app:latest -f my-app/Dockerfile my-app
+          docker tag nevereverfelix/my-vite-app:latest nevereverfelix/my-vite-app:${{ github.sha }}
 
       - name: Push Docker Image
         run: |
