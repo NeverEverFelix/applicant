@@ -58,8 +58,8 @@ jobs:
 
       - name: Push Docker Image
         run: |
-          docker push yourdockerhubusername/yourapp:latest
-          docker push yourdockerhubusername/yourapp:${{ github.sha }}
+          docker push yourdockerhubusername/my-vite-app:latest
+          docker push yourdockerhubusername/my-vite-app:${{ github.sha }}
 
   deploy:
     needs: docker
