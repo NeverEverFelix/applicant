@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+//import fs from 'fs';
 
 export default defineConfig({
   plugins: [react()],
@@ -11,4 +12,15 @@ export default defineConfig({
     }
   }
 });
+//   server: {
+//     https: fs.existsSync('./certs/server.key') && fs.existsSync('./certs/server.crt')
+//       ? {
+//           key: fs.readFileSync('./certs/server.key'),
+//           cert: fs.readFileSync('./certs/server.crt'),
+//         }
+//       : false, // Falls back to HTTP if no SSL certs exist
+//     host: '0.0.0.0', // Allow external access (useful in Docker)
+//     port: 443, // Use HTTPS default port
+//   }
+// });
 
