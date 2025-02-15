@@ -24,10 +24,6 @@ jobs:
       - name: Install dependencies
         run: npm install
        
-      - name: Debug ESLint Config
-        run: npx eslint --print-config src/App.jsx
-
-
       - name: Run Linting (Allow Warnings)
         run: npm run lint || echo "Linting completed with warnings"
 
@@ -35,7 +31,7 @@ jobs:
         run: npm test || echo "No tests found, skipping..."
 
       - name: Build Project (Vite)
-        run:  cd my-app && npx vite build
+        run: cd my-app && npx vite build
 
   docker:
     needs: build-test
@@ -50,10 +46,7 @@ jobs:
     
       - name: Login to Docker Hub
         run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-      - name: Debug Working Directory
-        run: pwd && ls -la
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+
       - name: Build Docker Image
         run: |
           docker build -t nevereverfelix/my-vite-app:latest -f my-app/Dockerfile my-app
@@ -65,8 +58,6 @@ jobs:
           docker push nevereverfelix/my-vite-app:latest
           docker push nevereverfelix/my-vite-app:${{ github.sha }}
           docker push nevereverfelix/my-vite-app:stable
-      - name: Verify Image Exists
-        run: docker images
 
   deploy:
     needs: docker
@@ -80,7 +71,19 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
+            # Pull the latest image
             docker pull nevereverfelix/my-vite-app:latest
             docker stop beautiful_jang || true
             docker rm beautiful_jang || true
+
+            # Start the container with the latest image
             docker run -d --name beautiful_jang -p 80:80 nevereverfelix/my-vite-app:latest
+
+            # Check if the container started successfully
+            if ! docker ps -q -f name=beautiful_jang; then
+              echo "Deployment failed, rolling back to stable version..."
+              docker stop beautiful_jang || true
+              docker rm beautiful_jang || true
+              # Start the container with the stable image
+              docker run -d --name beautiful_jang -p 80:80 nevereverfelix/my-vite-app:stable
+            fi
