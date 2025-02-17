@@ -3,7 +3,15 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import React from "react";
-
+import Navbar from './components/NavBar';
+import Home from "./pages/Home";
+import About from "./pages/About";
+import FAQs from "./pages/FAQs";
+import GetMyResults from ".pages/GetMyResults"
+import SubmitAWin from ".pages/SubmitAWin";
+import HeroSection from "../components/HeroSection";
+import SubtextCallout from "../components/SubtextCallout";
+import JobForm from "../components/JobForm";
 
 
 function App() {

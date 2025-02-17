@@ -1,0 +1,33 @@
+:root{
+--primary-color: #0068F4;
+--background-color:#ffffff;
+}
+
+body{
+font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+background-color: var(--background-color);
+}
+
+@font-face {
+    font-family: 'Neue Haas Grotesk Display Pro';
+    src: url('../assets/fonts/NeueHaasDisplayPro-Regular.woff2') format('woff2'),
+         url('../assets/fonts/NeueHaasDisplayPro-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Neue Haas Grotesk Display Pro';
+    src: url('../assets/fonts/NeueHaasDisplayPro-Bold.woff2') format('woff2'),
+         url('../assets/fonts/NeueHaasDisplayPro-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  /* Apply Font to Hero Section */
+.hero-heading {
+    font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+    font-weight: bold;
+    font-size: 3rem; /* Adjust size */
+    text-align: center;
+  }
