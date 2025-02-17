@@ -6,7 +6,7 @@ import React from "react";
 import Navbar from './components/NavBar';
 import Home from "./pages/Home";
 import About from "./pages/About";
-import FAQs from "./pages/FAQs";
+import FAQ from "./pages/FAQs";
 import GetMyResults from ".pages/GetMyResults"
 import SubmitAWin from ".pages/SubmitAWin";
 import HeroSection from "../components/HeroSection";
