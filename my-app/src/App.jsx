@@ -7,11 +7,13 @@ import "./components/Hero/HeroSection.css";  // ✅ Correct path
 import "./components/SubCallout/SubtextCallout.css";  // ✅ Correct path
 import HeroSection from "./components/Hero/HeroSection";
 import SubtextCallout from "./components/SubCallOut/SubtextCallout";
+import NavBar from "./components/NavBar/NavBar";
 
 function App() {
   return (
     <div classname="main-container">
-    <SubtextCallout />
+     <NavBar/>
+     <SubtextCallout />
      <HeroSection />
     </div>
   );
