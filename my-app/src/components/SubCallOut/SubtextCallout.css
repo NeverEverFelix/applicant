@@ -1,0 +1,59 @@
+.sub-callout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Space between dot and text */
+    padding: 6px 14px; /* Adjusts internal spacing */
+    border-radius: 20px; /* Matches Figma corner radius */
+    border: 1px solid rgba(0, 0, 0, 0.24); /* Black stroke at 24% opacity */
+    background-color: transparent; /* No fill */
+    font-family: "Hero Section Font", sans-serif;
+    position: relative;
+    width: max-content; /* ✅ Set exact width */
+    height: 26px; /* ✅ Set exact height */
+    margin-bottom:24px;
+    margin-left: 225px;
+    align-self: center; /* Centers it */
+    position: absolute;
+    top: calc(50% - 24px - 30px);
+  }
+  
+  .indicator-dot {
+   width: 8px;
+   height:8px;
+   border-radius: 50%;
+   background-color: #0068F4;
+   display: inline-block;
+  }
+  
+  .sub-callout-text {
+    line-height: 48px; 
+    max-width: 153px;
+    font-size: 14px;
+    color: #333;
+    font-family:"Hero Section Font";
+    letter-spacing: 0px;
+    font-weight: 575;
+  }
+
+ 
+@media (max-width: 1024px) {
+    .sub-callout {
+      padding-left: 80px; /* Reduce left padding */
+      padding-top: 180px; /* Adjust vertical positioning */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .sub-callout {
+      padding-left: 20px; /* Move closer to the left */
+      padding-top: 120px; /* Adjust for smaller screens */
+      padding: 4px 10px; /* Adjust padding to keep proportion */
+    }
+  
+    .sub-callout-text {
+      font-size: 12px; /* Reduce text size on smaller screens */
+    }
+  }
+  
+  

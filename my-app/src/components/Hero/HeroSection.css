@@ -1,0 +1,50 @@
+@font-face {
+    font-family:"Hero Section Font";
+    src: url("../assets/fonts/NHaasGroteskDSPro-55Rg.otf") format("opentype");     
+    font-weight: 500;
+    font-style: normal;
+  }
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-left: 146px; /* Match Figma X position */
+    padding-top: 304px; /* Match Figma Y position */
+    height: 100vh; /* Full screen height */
+    background-color: #ffffff; /* White background */
+    padding: 0 5%;
+    padding-top: 24px;
+  }
+  
+  .hero-text {
+    font-size: 48px;
+    font-weight: bold;
+    color: #000; /* Black text */
+    max-width: 800px;
+    font-family:"Hero Section Font";
+    font-weight: 500;
+    line-height: 48px; 
+    max-width: 1148px;
+    letter-spacing: 0px;
+  }
+
+  /* 🔹 Responsive Design for Tablets & Phones */
+@media (max-width: 1024px) {
+    .hero {
+      padding-left: 80px; /* Reduce left padding */
+      padding-top: 200px; /* Adjust vertical spacing */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero {
+      padding-left: 20px; /* Move text closer to the left */
+      padding-top: 150px; /* Adjust height for smaller screens */
+    }
+  
+    .hero-text {
+      font-size: 32px; /* Reduce font size on mobile */
+      line-height: 40px;
+    }
+  }
