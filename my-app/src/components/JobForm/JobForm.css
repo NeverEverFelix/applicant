@@ -1,0 +1,27 @@
+.input-form-container{
+background-color:#F2F2F2;
+width: 638px;
+height: 48px;
+border: 1px solid #ccc; /* Default border */
+border-radius: 12px;
+display: flex;
+align-items: center;
+padding-left: 20px; /* Space for the icon */
+transition: background 0.3s ease-in-out;
+}
+
+.job-input-icon {
+    font-size: 20px;
+    color: #888;
+    margin-right: 10px;
+  }
+
+  .job-input {
+    width: 278px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: black;
+    background: transparent;
+  }
+  

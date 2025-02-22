@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import React from "react";
 import "./components/Hero/HeroSection.css";  // ✅ Correct path
@@ -8,6 +7,7 @@ import "./components/SubCallout/SubtextCallout.css";  // ✅ Correct path
 import HeroSection from "./components/Hero/HeroSection";
 import SubtextCallout from "./components/SubCallOut/SubtextCallout";
 import NavBar from "./components/NavBar/NavBar";
+import JobForm from './components/JobForm/JobForm';
 
 function App() {
   return (
