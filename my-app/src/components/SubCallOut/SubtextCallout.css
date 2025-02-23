@@ -8,14 +8,15 @@
     border: 1px solid rgba(0, 0, 0, 0.24); /* Black stroke at 24% opacity */
     background-color: transparent; /* No fill */
     font-family: "Hero Section Font", sans-serif;
-    position: relative;
+    position: static;
     width: max-content; /* ✅ Set exact width */
     height: 26px; /* ✅ Set exact height */
     margin-bottom:24px;
-    margin-left: 225px;
     align-self: center; /* Centers it */
     position: absolute;
-    top: calc(50% - 24px - 30px);
+    top: 500px; /* Adjust this number to move up/down */
+    transform: translateY(-340%);
+
   }
   
   .indicator-dot {

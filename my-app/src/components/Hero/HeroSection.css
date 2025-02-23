@@ -15,6 +15,9 @@
     background-color: #ffffff; /* White background */
     padding: 0 5%;
     padding-top: 24px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    position: static;
   }
   
   .hero-text {

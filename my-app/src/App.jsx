@@ -8,13 +8,16 @@ import HeroSection from "./components/Hero/HeroSection";
 import SubtextCallout from "./components/SubCallOut/SubtextCallout";
 import NavBar from "./components/NavBar/NavBar";
 import JobForm from './components/JobForm/JobForm';
+import UploadBox from "./components/FileUploadBox/UploadBox";
 
 function App() {
   return (
-    <div classname="main-container">
+    <div className="main-container">
      <NavBar/>
      <SubtextCallout />
      <HeroSection />
+     <JobForm/>
+     <UploadBox /> 
     </div>
   );
 }

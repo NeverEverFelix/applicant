@@ -2,26 +2,40 @@
 background-color:#F2F2F2;
 width: 638px;
 height: 48px;
-border: 1px solid #ccc; /* Default border */
 border-radius: 12px;
 display: flex;
 align-items: center;
-padding-left: 20px; /* Space for the icon */
-transition: background 0.3s ease-in-out;
+margin-top: 48px;
+position: absolute;
+top: 540px; /* Adjust this number to move up/down */
+left: 50%;
+transform: translateX(-50%);
 }
 
 .job-input-icon {
-    font-size: 20px;
-    color: #888;
     margin-right: 10px;
+    width: 14px;        
+    height: 14px;
+    margin-left:20px;
   }
 
   .job-input {
-    width: 278px;
     border: none;
     outline: none;
-    font-size: 16px;
-    color: black;
     background: transparent;
+    width: 638px;
+    height: 48px;
+    border-radius: 12px;
+    transition: background 0.3s ease-in-out;
+  } 
+  .job-input-text{
+    font-size: 14px;
+    color: #B5B5B5;
+    font-family:"Hero Section Font";
+    max-width: 278px;
+    max-height: 10px;
   }
   
+  * {
+    box-sizing: border-box;
+}
