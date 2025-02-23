@@ -1,0 +1,44 @@
+.logo-container {
+    position: relative;
+    width: 765px;
+    max-width: 765px;
+    height:48.73px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Adjust this number to move up/down translateY(-300%); */
+    transform: translateY(-600%);
+  }
+  
+  .logo-scroll {
+    display: flex;
+    gap: 30px;
+    white-space: nowrap;
+  }
+  
+  .logo {
+    height: 50px;
+    object-fit: contain;
+  }
+  
+  .fade-left,
+  .fade-right {
+    position: absolute;
+    top: 0;
+    width: 80px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .fade-left {
+    left: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  }
+  
+  .fade-right {
+    right: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  }
+  

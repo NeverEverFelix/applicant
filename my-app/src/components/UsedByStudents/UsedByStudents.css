@@ -1,0 +1,12 @@
+.used-by-students{
+    text-align: center;
+    display: flex;
+    top: 500px; /* Adjust this number to move up/down */
+    transform: translateY(-400%); 
+}
+
+.used-by-title{
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+}

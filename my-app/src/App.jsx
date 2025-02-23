@@ -9,6 +9,9 @@ import SubtextCallout from "./components/SubCallOut/SubtextCallout";
 import NavBar from "./components/NavBar/NavBar";
 import JobForm from './components/JobForm/JobForm';
 import UploadBox from "./components/FileUploadBox/UploadBox";
+import GenerateResults from "./components/GenerateResults/GenerateResults";
+import UsedByStudents from './components/UsedByStudents/UsedByStudents';
+import UsedUniversities from "./components/UsedUniversities/UsedUniversities";
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
      <HeroSection />
      <JobForm/>
      <UploadBox /> 
+     <GenerateResults/>
+     <UsedByStudents/>
+     <UsedUniversities/>
     </div>
   );
 }

@@ -1,0 +1,31 @@
+
+
+.generate-results{
+width:638px;
+height:48px;
+border-radius: 12px;
+color:#0068F4;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24); /* Simulates an inner stroke */
+background-color: #0068F4;
+top: 500px; /* Adjust this number to move up/down */
+transform: translateY(-575%);
+}
+
+.generate-results-icon{
+width:14.67px;
+height: 14px;
+margin-right: 8px;
+}
+
+.generate-results-text{
+    color: #FFFF;
+    font-size: 14px;
+    line-height:48px;
+    font-family: "Hero Section Font";
+    font-weight: 500;
+    max-width: 103px;
+  }
