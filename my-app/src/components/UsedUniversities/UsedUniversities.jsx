@@ -1,6 +1,7 @@
 import React from "react";
 import "./usedUniversities.css";
 import {motion} from "framer-motion";
+//import { fetchUniversities } from "./fetchUniversities";
 
 const placeholderLogos = [
     "https://upload.wikimedia.org/wikipedia/commons/3/3f/MIT_Seal.svg", // MIT Logo
