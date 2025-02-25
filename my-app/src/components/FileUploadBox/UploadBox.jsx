@@ -1,6 +1,6 @@
 import React from "react";
 import "./UploadBox.css";
-import arrowIcon from "/Users/felixm/Desktop/applicant/my-app/src/assets/Icons/arrowIcon.png";
+import arrowIcon from "../../assets/Icons/arrowIcon.png";
 const UploadBox = () => {
     return (
       <div className="upload-box">

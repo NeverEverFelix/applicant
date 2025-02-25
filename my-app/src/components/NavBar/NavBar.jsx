@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import ApplicanLogo from "/Users/felixm/Desktop/applicant/my-app/src/assets/logos/ApplicanLogo.png";
+import ApplicanLogo from "../../assets/logos/ApplicanLogo.png";
 import React from "react";
 import "./Navbar.css"; 
 

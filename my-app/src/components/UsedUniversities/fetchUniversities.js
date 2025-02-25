@@ -1,7 +1,7 @@
 // api logic for fetching university logos from firebase
 
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "my-app/src/Firebase/firebaseConfig.js";
+import { db } from "../../Firebase/firebaseConfig.js";
 
 
 

@@ -1,6 +1,6 @@
 import React from "react";
 import "./GenerateResults.css";
-import generateResultsIcon from "/Users/felixm/Desktop/applicant/my-app/src/assets/Icons/generateResultsIcon.png";
+import generateResultsIcon from "../../assets/Icons/generateResultsIcon.png";
 
 const GenerateResults = ({ onClick }) => {
     return (
