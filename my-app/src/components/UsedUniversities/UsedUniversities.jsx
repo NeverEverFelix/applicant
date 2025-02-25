@@ -1,16 +1,35 @@
-import React from "react";
-import "./usedUniversities.css";
-import {motion} from "framer-motion";
-//import { fetchUniversities } from "./fetchUniversities";
 
-const placeholderLogos = [
-    "https://upload.wikimedia.org/wikipedia/commons/3/3f/MIT_Seal.svg", // MIT Logo
-    "https://upload.wikimedia.org/wikipedia/en/4/44/Stanford_Cardinal_logo.svg", // Stanford
-    "https://upload.wikimedia.org/wikipedia/commons/e/e5/UC_Berkeley_seal.svg", // Berkeley
-    "https://upload.wikimedia.org/wikipedia/en/8/8c/Penn_Quakers_logo.svg", // UPenn
-  ];
+import React, { useState, useEffect } from "react";
+import {motion} from "framer-motion";
+import { fetchUniversities } from "./fetchUniversities";
+import "./usedUniversities.css";
+
 
 const UsedUniversities = () => {
+  
+  const [logos, setLogos] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+      const getLogos = async () => {
+      try {
+        const universities = await fetchUniversities();
+        setLogos(universities.map((uni) => uni.logoURI) ?? []); // Store only logos
+      } catch (error) {
+        console.error("Error fetching university logos:", error);
+        setLogos([]); // Ensure logos is always a valid array
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getLogos();
+  }, []);
+
+  if (logos.length === 0) {
+    return <p>Loading universities...</p>; // Prevents rendering before data loads
+  }
+
     return (
       <div className="logo-container">
         {/* Fading edges */}
@@ -23,11 +42,11 @@ const UsedUniversities = () => {
           animate={{ x: "-50%" }}
           transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
         >
-          {placeholderLogos.map((logo, index) => (
+          {logos.map((logo, index) => (
             <img key={index} src={logo} alt={`University ${index}`} className="logo" />
           ))}
           {/* Duplicate images for smooth looping */}
-          {placeholderLogos.map((logo, index) => (
+          {logos.map((logo, index) => (
             <img key={`dup-${index}`} src={logo} alt={`University ${index}`} className="logo" />
           ))}
         </motion.div>
