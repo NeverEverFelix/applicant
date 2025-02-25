@@ -11,6 +11,7 @@
   box-sizing: border-box;
   background-color: white; 
   overflow:hidden;
+  position: fixed;
 }
 
 .main-container {

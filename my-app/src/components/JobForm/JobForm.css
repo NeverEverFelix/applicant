@@ -8,8 +8,8 @@ align-items: center;
 margin-top: 48px;
 position: absolute;
 top: 540px; /* Adjust this number to move up/down */
-left: 50%;
-transform: translateX(-50%);
+
+transform: translateY(-75%);
 }
 
 .job-input-icon {

@@ -15,7 +15,7 @@
     align-self: center; /* Centers it */
     position: absolute;
     top: 500px; /* Adjust this number to move up/down */
-    transform: translateY(-340%);
+    transform: translateY(-425%);
 
   }
   
