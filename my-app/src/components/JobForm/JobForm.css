@@ -31,7 +31,7 @@ transform: translateY(-75%);
   .job-input-text{
     font-size: 14px;
     color: #B5B5B5;
-    font-family:"Hero Section Font";
+    font-family:"Hero Section Font",sans-serif;
     max-width: 278px;
     max-height: 10px;
   }
