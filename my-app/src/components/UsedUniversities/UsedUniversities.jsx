@@ -14,7 +14,7 @@ const UsedUniversities = () => {
       const getLogos = async () => {
       try {
         const universities = await fetchUniversities();
-        setLogos(universities.map((uni) => uni.logoURI) ?? []); // Store only logos
+        setLogos(universities.map((uni) => uni.logoURL) ?? []); // Store only logos
       } catch (error) {
         console.error("Error fetching university logos:", error);
         setLogos([]); // Ensure logos is always a valid array
