@@ -14,16 +14,22 @@ import UsedByStudents from './components/UsedByStudents/UsedByStudents';
 import UsedUniversities from "./components/UsedUniversities/UsedUniversities";
 
 function App() {
+  const [showPopup, setShowPopup] = useState(false); 
   return (
     <div className="main-container">
      <NavBar/>
      <SubtextCallout />
      <HeroSection />
-     <JobForm/>
+     <JobForm setShowPopup={setShowPopup} />
      <UploadBox /> 
      <GenerateResults/>
      <UsedByStudents/>
      <UsedUniversities/>
+     {showPopup && (
+        <div className="invalid-job-link">
+          <p className="invalid-job-link-text">Invalid job link</p>
+        </div>
+      )}
     </div>
   );
 }

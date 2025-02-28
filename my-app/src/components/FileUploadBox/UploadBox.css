@@ -10,6 +10,8 @@
     background-color: transparent;
     top: 500px; /* Adjust this number to move up/down */
     transform: translateY(-145%);
+    cursor: pointer;
+    transition: border 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .upload-text {
@@ -23,5 +25,18 @@
 width: 10px;
 height: 10px;
 margin-right:6px;
+}
+
+.upload-box:not(.file-uploaded):hover {
+    border: 2px solid #0068F4; /* Solid blue border */
+}
+
+/* Change text color on hover */
+.upload-box:hover .upload-text{
+    color: #0068F4;
+}
+
+.upload-box.file-uploaded .upload-text {
+    color: #0068F4; /* Blue text */
 }
 

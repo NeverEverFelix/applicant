@@ -8,7 +8,8 @@
     align-items: center;
     justify-content: center;
     /* Adjust this number to move up/down translateY(-300%); */
-    transform: translateY(-600%);
+    transform: translateY(-675%);
+    margin-bottom:50px
   }
   
   .logo-scroll {

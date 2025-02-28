@@ -2,7 +2,7 @@
     text-align: center;
     display: flex;
     top: 500px; /* Adjust this number to move up/down */
-    transform: translateY(-400%); 
+    transform: translateY(-425%); 
 }
 
 .used-by-title{

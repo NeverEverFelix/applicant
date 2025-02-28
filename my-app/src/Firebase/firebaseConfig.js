@@ -32,4 +32,10 @@ if (typeof window !== "undefined") {
 }
 
 
+// db = initializeFirestore(app, {
+//   experimentalForceLongPolling: false,
+// }, 'users');
+
+
+
 export { db,analytics };
