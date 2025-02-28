@@ -40,3 +40,7 @@ margin-right:6px;
     color: #0068F4; /* Blue text */
 }
 
+.upload-box.dragging {
+    border: 2px solid #0068F4;
+    background-color: rgba(0, 104, 244, 0.1); /* Light blue background */
+}
