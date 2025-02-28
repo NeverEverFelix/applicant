@@ -19,6 +19,8 @@ const JobForm = ({ setShowPopup }) => {
   
   const handleInputChange = (event) => {
     const value = event.target.value;
+    if (event.inputType === "insertFromPaste") return;
+    console.log("Input Changed:", value);
     setJobLink(value);
 
     if (isValidHttpUrl(value)) {
@@ -34,9 +36,10 @@ const JobForm = ({ setShowPopup }) => {
 
   const handlePaste = (event) => {
     const pastedText = event.clipboardData.getData("text");
+    console.log("Pasted Text:", pastedText);
 
     if (isValidHttpUrl(pastedText)) {
-      setJobLink(pastedText);
+      //setJobLink(pastedText);
       setIsPasted(true);
       setIsValidUrl(true);
       setShowPopup(false); // Hide popup if valid

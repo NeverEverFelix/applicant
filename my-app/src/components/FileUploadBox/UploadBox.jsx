@@ -40,6 +40,7 @@ const handleDragLeave = () => {
   const handleClick = () => {
     document.getElementById("fileUploadInput").click();
   };
+  
   return (
       <div className= {`upload-box ${file ? "file-uploaded" : ""} ${isDragging ? "dragging" : ""}`}
         onClick={handleClick}
