@@ -9,18 +9,11 @@ import chatgptService from "./chatgptService.js"; // Ensure correct path
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5173;
+const PORT = process.env.PORT || 5001;
 
 app.use(express.json());
 app.use(cors()); // Enable CORS
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-app.use(express.static(path.join(__dirname, "dist")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
-});
 
 
 
@@ -28,7 +21,8 @@ app.get("*", (req, res) => {
 
 
 
-app.use("/api", chatgptService); // Use the chatgptService routes
+
+app.use("/API", chatgptService); // Use the chatgptService routes
 
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
 

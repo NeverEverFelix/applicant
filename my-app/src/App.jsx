@@ -5,7 +5,7 @@ import React from "react";
 import "./components/Hero/HeroSection.css";  // ✅ Correct path
 import "./components/SubCallout/SubtextCallout.css";  // ✅ Correct path
 import HeroSection from "./components/Hero/HeroSection";
-import SubtextCallout from "./components/SubCallOut/SubtextCallout";
+import SubtextCallout from "./components/SubCallout/SubtextCallout";
 import NavBar from "./components/NavBar/NavBar";
 import JobForm from './components/JobForm/JobForm';
 import UploadBox from "./components/FileUploadBox/UploadBox";

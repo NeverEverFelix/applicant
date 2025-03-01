@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import {motion} from "framer-motion";
 import { fetchUniversities } from "./fetchUniversities";
-import "./usedUniversities.css";
+import "./UsedUniversities.css";
 
 
 const UsedUniversities = () => {
