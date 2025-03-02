@@ -1,13 +1,27 @@
 version: '3.8'
 
 services:
-  app:
-    image: nevereverfelix/my-vite-app:latest  # Replace with your app's image
-    ports:
-      - "80:80"
+  nginx:
+    image: nginx:latest
+    container_name: nginx
     restart: always
+    ports:
+      - "80:80"  # HTTP traffic on port 80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro  # Mount Nginx config
+    depends_on:
+      - app
+    networks:
+      - app-network
+
+  app:
+    image: nevereverfelix/applican:latest  # Replace with your built image
+    container_name: applican
+    restart: always
+    ports:
+      - "5001:5001"
     environment:
-      - ENV_VAR=example
+      - VITE_API_URL=http://applican:5001/api  # Backend API URL
     networks:
       - app-network
 
