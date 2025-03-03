@@ -2,9 +2,8 @@ import React from "react";
 import { useState } from "react";
 import "./UploadBox.css";
 import arrowIcon from "../../assets/Icons/arrowIcon.png";
-const UploadBox = () => {
+const UploadBox = ({setUuid}) => {
     const [file, setFile] = useState(null);
-    const [resumeText, setResumeText] = useState("");
     const [isDragging, setIsDragging] = useState(false);
     const [isUploading, setIsUploading] = useState(false); // Loading state
     const [error, setError] = useState(null);
@@ -28,7 +27,8 @@ const UploadBox = () => {
           }
 
           const data = await response.json();
-          setResumeText(data.text); // Store extracted resume text
+          setUuid(data.uuid);
+          // setResumeText(data.text); // Store extracted resume text
           console.log("Extracted Resume Text:", data.text);
 
       } catch (err) {

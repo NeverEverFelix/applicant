@@ -7,7 +7,7 @@ dotenv.config({ path: path.resolve(process.cwd(), ".env") });
 const router = express.Router();
 
 // 🔹 Import function to get the latest resume text
-import { getExtractedResumeText } from "./server.js"; 
+import { resumeStorage } from "./server.js"; 
 
 // 🔹 OpenAI API Setup
 const openai = new OpenAI({
@@ -17,16 +17,22 @@ const openai = new OpenAI({
 // 🔹 Route: Analyze Resume Against Job Description
 router.post("/analyze", async (req, res) => {
     try {
-        const { jobDescription } = req.body;
+        const {uuid, jobDescription } = req.body;
 
-        if (!jobDescription) {
-            return res.status(400).json({ success: false, error: "Missing job description" });
+        console.log("Received request for analysis:", { uuid, jobDescription });
+
+        if (!uuid || !jobDescription) {
+            return res.status(400).json({ success: false, error: "Missing job description or UUID" });
         }
 
         // 🔹 Retrieve the latest uploaded resume text
-        const extractedResumeText = getExtractedResumeText();
+        const extractedResumeText = resumeStorage[uuid];
+
+        // ✅ ADD THIS LOG TO VERIFY THE RESUME TEXT
+        console.log(`Retrieved resume for UUID ${uuid}:`, extractedResumeText);
+
         if (!extractedResumeText) {
-            return res.status(404).json({ success: false, error: "No resume uploaded yet" });
+            return res.status(404).json({ success: false, error: "No resume uploaded yet for given uuid" });
         }
 
         // 🔹 Construct ChatGPT prompt
@@ -45,7 +51,7 @@ router.post("/analyze", async (req, res) => {
         --- Job Description ---
         ${jobDescription}
         `;
-
+        console.log("Sending request to ChatGPT with prompt:", prompt);
         // 🔹 Call OpenAI API
         const response = await openai.chat.completions.create({
             model: "gpt-4", // Use GPT-4 for better results
@@ -57,12 +63,17 @@ router.post("/analyze", async (req, res) => {
         // 🔹 Extract and validate OpenAI response
         let analysis;
         try {
-            analysis = JSON.parse(response.choices[0].message.content.trim());
+            const chatResponse = response.choices?.[0]?.message?.content?.trim();
+            if (!chatResponse) {
+                throw new Error("Empty response from ChatGPT API");
+            }
+            analysis = JSON.parse(chatResponse);
+            console.log("ChatGPT Response:", analysis);
         } catch (err) {
             console.error("ChatGPT Response Parsing Error:", err);
             return res.status(500).json({ success: false, error: "Invalid response from AI" });
         }
-
+        console.log("Final response to frontend:", { success: true, analysis });
         return res.json({ success: true, analysis });
     } catch (error) {
         console.error("ChatGPT API Error:", error);

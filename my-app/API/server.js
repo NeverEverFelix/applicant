@@ -7,6 +7,8 @@ import { PDFDocument } from "pdf-lib"; // ✅ Replacing pdf-parse
 import mammoth from "mammoth";
 import textract from "textract";
 import path from "path";
+import crypto from "crypto"; // ✅ Import crypto for UUID generation
+
 
 dotenv.config({ path: path.resolve(process.cwd(), ".env") });
 console.log("✅ Loaded API Key:", process.env.OPENAI_API_KEY);
@@ -14,15 +16,15 @@ console.log("✅ Loaded API Key:", process.env.OPENAI_API_KEY);
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// 🔹 In-memory storage for latest uploaded resume
-let extractedResumeText = "";
+// 🔹 In-memory storage for uploaded resumes (Key: UUID, Value: Extracted Text)
+let resumeStorage = {};
 
 // 🔹 Multer configuration for file uploads
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 // 🔹 Function to get the latest resume text (For RESTful API Design)
-export const getExtractedResumeText = () => extractedResumeText;
+
 
 // 🔹 Route: Upload Resume & Extract Text
 app.post("/API/upload", upload.single("resume"), async (req, res) => {
@@ -53,11 +55,14 @@ app.post("/API/upload", upload.single("resume"), async (req, res) => {
         } else {
             return res.status(400).json({ success: false, error: "Unsupported file type" });
         }
+        // 🔹 Generate a unique UUID for this resume
+        const uuid = crypto.randomUUID();
+        resumeStorage[uuid] = extractedText; // Store extracted text under UUID
 
-        // 🔹 Store extracted text
-        extractedResumeText = extractedText;
+        console.log(`✅ Resume stored with UUID: ${uuid}`);
+        
 
-        return res.json({ success: true, extractedText });
+        return res.json({ success: true, uuid });
     } catch (error) {
         console.error("Error extracting resume text:", error);
         return res.status(500).json({ success: false, error: "Failed to extract resume text" });
@@ -75,3 +80,4 @@ app.use("/API", chatgptService);
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
 
 
+export { resumeStorage }; // ✅ Export so chatgptService.js can use it

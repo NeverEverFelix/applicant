@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./JobForm.css";
 import fileUploadicon from "../../assets/Icons/fileUploadicon.png";
-const JobForm = ({ setShowPopup }) => {
+const JobForm = ({ setShowPopup, setJobLink }) => {
   
-  const [jobLink, setJobLink] = useState("");
+  
   const [isPasted, setIsPasted] = useState(false);
   const [isValidUrl, setIsValidUrl] = useState(true);
   // Handle input changes
@@ -19,18 +19,17 @@ const JobForm = ({ setShowPopup }) => {
   
   const handleInputChange = (event) => {
     const value = event.target.value;
-    if (event.inputType === "insertFromPaste") return;
-    console.log("Input Changed:", value);
-    setJobLink(value);
+    setJobLinkInput(value);
 
     if (isValidHttpUrl(value)) {
-      setIsValidUrl(true);
-      setShowPopup(false); // Hide popup if input is valid
+        setIsValidUrl(true);
+        setJobLink(value);  // Update jobLink in App.jsx
     } else {
-      setIsValidUrl(false);
-      setShowPopup(true); // Show popup if input is invalid
+        setIsValidUrl(false);
+        setJobLink("");  // Clear jobLink if invalid
     }
-  };
+};
+
 
   
 

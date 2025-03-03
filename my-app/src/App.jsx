@@ -12,17 +12,22 @@ import UploadBox from "./components/FileUploadBox/UploadBox";
 import GenerateResults from "./components/GenerateResults/GenerateResults";
 import UsedByStudents from './components/UsedByStudents/UsedByStudents';
 import UsedUniversities from "./components/UsedUniversities/UsedUniversities";
+import { Provider } from "react-redux";
+import store from "./redux/store"; 
 
 function App() {
+  const [uuid, setUuid] = useState(null);
+  const [jobLink, setJobLink] = useState(""); 
   const [showPopup, setShowPopup] = useState(false); 
   return (
-    <div className="main-container">
+    <Provider store={store}> 
+   <div className="main-container">
      <NavBar/>
      <SubtextCallout />
      <HeroSection />
-     <JobForm setShowPopup={setShowPopup} />
-     <UploadBox /> 
-     <GenerateResults/>
+     <JobForm setShowPopup={setShowPopup} setJobLink={setJobLink} />
+     <UploadBox setUuid={setUuid} /> 
+     <GenerateResults uuid={uuid} jobLink={jobLink}/>
      <UsedByStudents/>
      <UsedUniversities/>
      {showPopup && (
@@ -31,6 +36,7 @@ function App() {
         </div>
       )}
     </div>
+    </Provider>
   );
 }
 export default App
