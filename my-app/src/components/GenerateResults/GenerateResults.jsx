@@ -8,7 +8,7 @@ import generateResultsIcon from "../../assets/Icons/generateResultsIcon.png";
 const GenerateResults = ({ uuid,jobLink }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isLoading, isError } = useSelector((state) => state.chatgpt);
+  const { isLoading, isError, jobLink} = useSelector((state) => state.chatgpt);
 
   const handleGenerateResults = async () => {
     if(!uuid || !jobLink){

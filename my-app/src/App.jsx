@@ -1,7 +1,8 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
 import React from "react";
+import { useState } from 'react';
+import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./components/Hero/HeroSection.css";  // ✅ Correct path
 import "./components/SubCallout/SubtextCallout.css";  // ✅ Correct path
 import HeroSection from "./components/Hero/HeroSection";
@@ -17,17 +18,19 @@ import store from "./redux/store";
 
 function App() {
   const [uuid, setUuid] = useState(null);
-  const [jobLink, setJobLink] = useState(""); 
   const [showPopup, setShowPopup] = useState(false); 
   return (
     <Provider store={store}> 
+     <Router>
+     <Routes>
+     <Route path="/" element={
    <div className="main-container">
      <NavBar/>
      <SubtextCallout />
      <HeroSection />
-     <JobForm setShowPopup={setShowPopup} setJobLink={setJobLink} />
+     <JobForm setShowPopup={setShowPopup} />
      <UploadBox setUuid={setUuid} /> 
-     <GenerateResults uuid={uuid} jobLink={jobLink}/>
+     <GenerateResults uuid={uuid}/>
      <UsedByStudents/>
      <UsedUniversities/>
      {showPopup && (
@@ -36,6 +39,9 @@ function App() {
         </div>
       )}
     </div>
+     }/>
+    </Routes>
+    </Router>
     </Provider>
   );
 }

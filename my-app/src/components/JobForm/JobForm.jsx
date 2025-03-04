@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setJobLink } from "../../redux/chatgptSlice"; // 
 import "./JobForm.css";
 import fileUploadicon from "../../assets/Icons/fileUploadicon.png";
+
 const JobForm = ({ setShowPopup }) => {
   const dispatch = useDispatch();
   const jobLink = useSelector((state) => state.chatgpt.jobLink); 
