@@ -17,7 +17,7 @@ const GenerateResults = ({ uuid }) => {
     }
     dispatch(startLoading());
     try {
-      const response = await fetch("http://localhost:5173/api/analyze", {
+      const response = await fetch("http://localhost:5001/API/analyze", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ uuid, jobLink }),

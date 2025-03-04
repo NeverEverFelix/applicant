@@ -17,7 +17,7 @@ const UploadBox = ({setUuid}) => {
       formData.append("resume", selectedFile);
 
       try {
-          const response = await fetch("http://localhost:5173/api/upload", {
+          const response = await fetch("http://localhost:5001/API/upload", {
               method: "POST",
               body: formData,
           });
