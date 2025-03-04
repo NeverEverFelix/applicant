@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./JobForm.css";
 import fileUploadicon from "../../assets/Icons/fileUploadicon.png";
-const JobForm = ({ setShowPopup, setJobLink }) => {
+const JobForm = ({ setShowPopup }) => {
   const dispatch = useDispatch();
   const jobLink = useSelector((state) => state.chatgpt.jobLink); 
   
