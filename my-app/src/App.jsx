@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from 'react';
 import './App.css';
-import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./components/Hero/HeroSection.css";  // ✅ Correct path
 import "./components/SubCallout/SubtextCallout.css";  // ✅ Correct path

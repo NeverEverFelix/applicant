@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./GenerateResults.css";
 import generateResultsIcon from "../../assets/Icons/generateResultsIcon.png";
 
-const GenerateResults = ({ uuid,jobLink }) => {
+const GenerateResults = ({ uuid }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoading, isError, jobLink} = useSelector((state) => state.chatgpt);
