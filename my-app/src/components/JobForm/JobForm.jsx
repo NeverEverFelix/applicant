@@ -2,7 +2,8 @@ import { useState } from "react";
 import "./JobForm.css";
 import fileUploadicon from "../../assets/Icons/fileUploadicon.png";
 const JobForm = ({ setShowPopup, setJobLink }) => {
-  
+  const dispatch = useDispatch();
+  const jobLink = useSelector((state) => state.chatgpt.jobLink); 
   
   const [isPasted, setIsPasted] = useState(false);
   const [isValidUrl, setIsValidUrl] = useState(true);
@@ -19,14 +20,14 @@ const JobForm = ({ setShowPopup, setJobLink }) => {
   
   const handleInputChange = (event) => {
     const value = event.target.value;
-    setJobLinkInput(value);
+    
 
     if (isValidHttpUrl(value)) {
         setIsValidUrl(true);
-        setJobLink(value);  // Update jobLink in App.jsx
+        dispatch(setJobLink(value));  // Update jobLink in App.jsx
     } else {
         setIsValidUrl(false);
-        setJobLink("");  // Clear jobLink if invalid
+        dispatch(setJobLink(""));  // Clear jobLink if invalid
     }
 };
 
@@ -38,13 +39,13 @@ const JobForm = ({ setShowPopup, setJobLink }) => {
     console.log("Pasted Text:", pastedText);
 
     if (isValidHttpUrl(pastedText)) {
-      //setJobLink(pastedText);
+      dispatch(setJobLink(pastedText));
       setIsPasted(true);
       setIsValidUrl(true);
       setShowPopup(false); // Hide popup if valid
     } else {
       setIsValidUrl(false);
-      setJobLink(""); // Clear input field
+      dispatch(setJobLink("")); // Clear input field
       setShowPopup(true); // Show popup if invalid
     }
   };
