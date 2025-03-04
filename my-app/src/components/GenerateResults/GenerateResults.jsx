@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { startLoading, setResults, setError } from "../../redux/chatgptSlice"; 
 import { useNavigate } from "react-router-dom";
+import {motion} from "framer-motion";
 import "./GenerateResults.css";
 import generateResultsIcon from "../../assets/Icons/generateResultsIcon.png";
 
@@ -38,15 +39,26 @@ const GenerateResults = ({ uuid }) => {
   }
 };
   return (
-      <button className={`generate-results ${isError ? "error": ""}`}
-      onClick={handleGenerateResults}
-      disabled={isLoading}
+    <motion.button
+    className={`generate-results ${isError ? "error": ""}`}
+    onClick={handleGenerateResults}
+    disabled={isLoading}
+    whileHover={{ 
+      scale: 1.1,
+      transition: { duration: 0.1 },
+    }}
+
+    whileTap={{ 
+      scale: 0.95, 
+      transition: { duration: 0.1 },
+    }}
+    onHoverStart={() => console.log('hover started!')}
       >
         <img src={generateResultsIcon} alt="generateResultsIcon" className="generate-results-icon" />
         <span className="generate-results-text">
         {isLoading ? "Generating..." : "Get My Results"}
         </span>
-      </button>
+      </motion.button>
     );
   };
   

@@ -17,6 +17,7 @@ const openai = new OpenAI({
 // 🔹 Route: Analyze Resume Against Job Description
 router.post("/analyze", async (req, res) => {
     try {
+        console.log("✅ Analyze API hit"); 
         const {uuid, jobDescription } = req.body;
 
         console.log("Received request for analysis:", { uuid, jobDescription });

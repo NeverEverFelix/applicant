@@ -3,6 +3,9 @@
     display: flex;
     top: 500px; /* Adjust this number to move up/down */
     transform: translateY(-425%); 
+    position:static;
+    margin-bottom: 20px;
+    margin-top: 15px;
 }
 
 .used-by-title{
