@@ -1,0 +1,41 @@
+.results-container{
+  display: grid;
+  grid-template-columns: 1fr; /* Single column layout */
+  grid-template-rows: auto; /* Rows adjust dynamically */
+  max-width: 1200px; /* Prevent excessive stretching */
+  margin: 0 auto; /* Center the content horizontally */
+  padding: 20px; /* General padding */
+}
+.results-container h2,.jobs-section h2,.resume-section h2 {
+    color: black;
+  }
+  .job-title-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 65px;  
+  }
+  .job-title {
+    color:black;
+    font-size: 2rem;
+    font-weight: bold;
+    max-width: 900px; /* Prevents overly long titles from stretching */
+    word-wrap: break-word; /* Ensures long words wrap instead of overflowing */
+    margin: 0 auto; /* Centers within the section */
+  }
+
+.resume-section,
+.jobs-section {
+  max-width: 1000px; /* Prevents stretching */
+  margin: 0 auto; /* Centers sections horizontally */
+  text-align: center; /* Centers text inside sections */
+  padding: 4vh 5vw; /* Dynamic spacing based on viewport size */
+  border-top: 2px dashed #ccc; /* Dashed line separation */
+}
+.match-section{
+    max-width: 1000px; /* Prevents stretching */
+    margin: 0 auto; /* Centers sections horizontally */
+    text-align: center; /* Centers text inside sections */
+    padding: 4vh 5vw; /* Dynamic spacing based on viewport size */
+}

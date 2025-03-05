@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setJobLink } from "../../redux/chatgptSlice"; // 
 import "./JobForm.css";
 import fileUploadicon from "../../assets/Icons/fileUploadicon.png";
 
-const JobForm = ({ setShowPopup }) => {
-  const dispatch = useDispatch();
-  const jobLink = useSelector((state) => state.chatgpt.jobLink); 
+const JobForm = () => {
+  
+   
   
   const [isPasted, setIsPasted] = useState(false);
   const [isValidUrl, setIsValidUrl] = useState(true);
@@ -23,14 +21,12 @@ const JobForm = ({ setShowPopup }) => {
   
   const handleInputChange = (event) => {
     const value = event.target.value;
-    
-
     if (isValidHttpUrl(value)) {
         setIsValidUrl(true);
-        dispatch(setJobLink(value));  // Update jobLink in App.jsx
+         
     } else {
         setIsValidUrl(false);
-        dispatch(setJobLink(""));  // Clear jobLink if invalid
+        // Clear jobLink if invalid
     }
 };
 
@@ -42,14 +38,14 @@ const JobForm = ({ setShowPopup }) => {
     console.log("Pasted Text:", pastedText);
 
     if (isValidHttpUrl(pastedText)) {
-      dispatch(setJobLink(pastedText));
+    
       setIsPasted(true);
       setIsValidUrl(true);
-      setShowPopup(false); // Hide popup if valid
+     
     } else {
       setIsValidUrl(false);
-      dispatch(setJobLink("")); // Clear input field
-      setShowPopup(true); // Show popup if invalid
+      // Clear input field
+      
     }
   };
   
@@ -62,7 +58,7 @@ const JobForm = ({ setShowPopup }) => {
           type="url"
           placeholder="Paste job posting link here..."
           className="job-input"
-          value={jobLink} // Controlled input
+           // Controlled input
           onChange={handleInputChange} 
           onPaste={handlePaste} // Detect when user pastes
           style={{ color: isPasted ? "#0068F4" : "black" }}

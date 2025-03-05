@@ -2,42 +2,14 @@ import React from "react";
 import { useState } from "react";
 import "./UploadBox.css";
 import arrowIcon from "../../assets/Icons/arrowIcon.png";
-const UploadBox = ({setUuid}) => {
+const UploadBox = () => {
     const [file, setFile] = useState(null);
     const [isDragging, setIsDragging] = useState(false);
     const [isUploading, setIsUploading] = useState(false); // Loading state
     const [error, setError] = useState(null);
 
 
-    const uploadFile = async (selectedFile) => {
-      setIsUploading(true);
-      setError(null);
-
-      const formData = new FormData();
-      formData.append("resume", selectedFile);
-
-      try {
-          const response = await fetch("http://localhost:5001/API/upload", {
-              method: "POST",
-              body: formData,
-          });
-
-          if (!response.ok) {
-              throw new Error("Failed to upload file.");
-          }
-
-          const data = await response.json();
-          setUuid(data.uuid);
-          // setResumeText(data.text); // Store extracted resume text
-          console.log("Extracted Resume Text:", data.text);
-
-      } catch (err) {
-          console.error("Upload error:", err);
-          setError("Error uploading file. Please try again.");
-      } finally {
-          setIsUploading(false);
-      }
-  };
+    
 
     // Handle file selection
     const handleFileChange = (event) => {

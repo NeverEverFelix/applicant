@@ -1,48 +1,22 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { startLoading, setResults, setError } from "../../redux/chatgptSlice"; 
 import { useNavigate } from "react-router-dom";
 import {motion} from "framer-motion";
 import "./GenerateResults.css";
 import generateResultsIcon from "../../assets/Icons/generateResultsIcon.png";
 
-const GenerateResults = ({ uuid }) => {
-  const dispatch = useDispatch();
+const GenerateResults = () => {
   const navigate = useNavigate();
-  const { isLoading, isError, jobLink} = useSelector((state) => state.chatgpt);
 
-  const handleGenerateResults = async () => {
-    if(!uuid || !jobLink){
-      dispatch(setError()); // Turn button red
-      return;
-    }
-    dispatch(startLoading());
-    try {
-      const response = await fetch("http://localhost:5001/API/analyze", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ uuid, jobLink }),
-      });
+  const handleGenerateResults = () => {
+    navigate("/results"); // Navigate to ResultsPage
+  };
 
-      if (!response.ok) {
-          throw new Error("Failed to fetch results.");
-      }
+  
 
-      const data = await response.json();
-      dispatch(setResults(data.analysis));
-      navigate("/results");
-      console.log("Analysis Results:", data);
-
-  } catch (error) {
-      console.error("Error:", error);
-      dispatch(setError());
-  }
-};
   return (
     <motion.button
-    className={`generate-results ${isError ? "error": ""}`}
+    className="generate-results"
     onClick={handleGenerateResults}
-    disabled={isLoading}
     whileHover={{ 
       scale: 1.1,
       transition: { duration: 0.1 },
@@ -55,9 +29,7 @@ const GenerateResults = ({ uuid }) => {
     onHoverStart={() => console.log('hover started!')}
       >
         <img src={generateResultsIcon} alt="generateResultsIcon" className="generate-results-icon" />
-        <span className="generate-results-text">
-        {isLoading ? "Generating..." : "Get My Results"}
-        </span>
+        <span className="generate-results-text">Get My Results</span>
       </motion.button>
     );
   };
