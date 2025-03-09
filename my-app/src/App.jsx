@@ -13,7 +13,8 @@ import UsedUniversities from "./components/UsedUniversities/UsedUniversities";
 
 
 function App() {
-  
+  const [jobLink, setJobLink] = useState("");
+  const [resumeText, setResumeText] = useState("");
   return (
   //   <Provider store={store}> 
   //    <Router>
@@ -23,9 +24,9 @@ function App() {
      <NavBar/>
      <SubtextCallout />
      <HeroSection />
-     <JobForm  />
-     <UploadBox  /> 
-     <GenerateResults />
+     <JobForm setJobLink={setJobLink}  />
+     <UploadBox onTextExtracted={setResumeText} /> 
+     <GenerateResults jobLink={jobLink} resumeText={resumeText}/>
      <UsedByStudents/>
      <UsedUniversities/>
     </div>

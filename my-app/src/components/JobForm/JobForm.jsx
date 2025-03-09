@@ -2,10 +2,8 @@ import { useState } from "react";
 import "./JobForm.css";
 import fileUploadicon from "../../assets/Icons/fileUploadicon.png";
 
-const JobForm = () => {
-  
-   
-  
+const JobForm = ({setJobLink}) => {
+  // Store job link
   const [isPasted, setIsPasted] = useState(false);
   const [isValidUrl, setIsValidUrl] = useState(true);
   // Handle input changes
@@ -23,10 +21,10 @@ const JobForm = () => {
     const value = event.target.value;
     if (isValidHttpUrl(value)) {
         setIsValidUrl(true);
-         
+        setJobLink(value);
     } else {
         setIsValidUrl(false);
-        // Clear jobLink if invalid
+        setJobLink("");// Clear jobLink if invalid
     }
 };
 
@@ -41,10 +39,10 @@ const JobForm = () => {
     
       setIsPasted(true);
       setIsValidUrl(true);
-     
+      setJobLink(pastedText);
     } else {
       setIsValidUrl(false);
-      // Clear input field
+      setJobLink("");// Clear input field
       
     }
   };
@@ -58,7 +56,7 @@ const JobForm = () => {
           type="url"
           placeholder="Paste job posting link here..."
           className="job-input"
-           // Controlled input
+           value={setJobLink}// Controlled input
           onChange={handleInputChange} 
           onPaste={handlePaste} // Detect when user pastes
           style={{ color: isPasted ? "#0068F4" : "black" }}

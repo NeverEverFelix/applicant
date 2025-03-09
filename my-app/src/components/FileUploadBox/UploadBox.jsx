@@ -2,26 +2,27 @@ import React from "react";
 import { useState } from "react";
 import "./UploadBox.css";
 import arrowIcon from "../../assets/Icons/arrowIcon.png";
-const UploadBox = () => {
+import extractResumeText from "./extractResumeText.js";
+const UploadBox = ({onTextExtracted}) => {
     const [file, setFile] = useState(null);
     const [isDragging, setIsDragging] = useState(false);
-    const [isUploading, setIsUploading] = useState(false); // Loading state
-    const [error, setError] = useState(null);
+    const [extractedText, setExtractedText]  = useState("");
+   
 
 
     
 
     // Handle file selection
-    const handleFileChange = (event) => {
+    const handleFileChange = async (event) => {
       const selectedFile = event.target.files[0];
       if (selectedFile) {
           setFile(selectedFile);
           setIsDragging(false); 
-          uploadFile(selectedFile);
+          await processFile(selectedFile);
       }
   };
   
-  const handleDrop = (event) => {
+  const handleDrop = async (event) => {
     event.preventDefault();
     event.stopPropagation();
     setIsDragging(false);
@@ -29,7 +30,7 @@ const UploadBox = () => {
     const droppedFile = event.dataTransfer.files[0];
     if (droppedFile) {
         setFile(droppedFile);
-        uploadFile(selectedFile);
+        await processFile(droppedFile);
     }
 };
 
@@ -47,7 +48,16 @@ const handleDragLeave = () => {
   const handleClick = () => {
     document.getElementById("fileUploadInput").click();
   };
-  
+  const processFile = async (file) => {
+    try {
+        const text = await extractResumeText(file);
+        setExtractedText(text);
+        console.log("Extracted Resume Text:", text);
+        onTextExtracted(text);
+    } catch (error) {
+        console.error("Error extracting text from file:", error);
+    }
+};
   return (
       <div className= {`upload-box ${file ? "file-uploaded" : ""} ${isDragging ? "dragging" : ""}`}
         onClick={() => document.getElementById("fileUploadInput").click()}

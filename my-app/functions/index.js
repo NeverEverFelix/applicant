@@ -75,7 +75,7 @@ Ensure the response is **valid JSON only**, with no extra text, explanations, or
       const openai = new OpenAI({ apiKey });
 
       const response = await openai.chat.completions.create({
-        model: "gpt-4",
+        model: "gpt-4o",
         messages: [{ role: "system", content: prompt }],
         temperature: 0.7,
         max_tokens: 500,
