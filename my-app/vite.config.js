@@ -1,10 +1,14 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import sitemap from "vite-plugin-sitemap"; // ✅ Correct import
+import wasm from "vite-plugin-wasm";
+import topLevelAwait from "vite-plugin-top-level-await"; 
 
 export default defineConfig({
   plugins: [
     react(),
+    wasm(),
+    topLevelAwait(),
     sitemap({
       hostname: "http://52.14.182.21", // Change this to your domain when deploying
       exclude: ["/admin", "/private"], // Exclude sensitive pages

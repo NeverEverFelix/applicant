@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./JobForm.css";
 import fileUploadicon from "../../assets/Icons/fileUploadicon.png";
 
@@ -56,7 +56,7 @@ const JobForm = ({setJobLink}) => {
           type="url"
           placeholder="Paste job posting link here..."
           className="job-input"
-           value={setJobLink}// Controlled input
+           value={isValidUrl ? "" : undefined}// Controlled input
           onChange={handleInputChange} 
           onPaste={handlePaste} // Detect when user pastes
           style={{ color: isPasted ? "#0068F4" : "black" }}

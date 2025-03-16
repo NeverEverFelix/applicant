@@ -3,13 +3,14 @@ import { useNavigate } from "react-router-dom";
 import {motion} from "framer-motion";
 import "./GenerateResults.css";
 import generateResultsIcon from "../../assets/Icons/generateResultsIcon.png";
-import { analyzeResume } from "../../../functions";
+
 
 const GenerateResults = ({jobLink, resumeText}) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
   const handleGenerateResults = async () => {
+    console.log(jobLink, resumeText); 
     if (!jobLink || !resumeText) {
       alert("Please ensure both a job link and resume text are provided.");
       return;

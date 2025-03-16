@@ -2,12 +2,14 @@ import React from "react";
 import { useState } from "react";
 import "./UploadBox.css";
 import arrowIcon from "../../assets/Icons/arrowIcon.png";
-import extractResumeText from "./extractResumeText.js";
+import {extractResumeText} from "./extractResumeText.js";
 const UploadBox = ({onTextExtracted}) => {
     const [file, setFile] = useState(null);
     const [isDragging, setIsDragging] = useState(false);
     const [extractedText, setExtractedText]  = useState("");
-   
+    const [isUploading, setIsUploading] = useState(false);
+    const [error, setError] = useState(null);
+
 
 
     

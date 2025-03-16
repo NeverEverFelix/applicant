@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import './App.css';
 import "./components/Hero/HeroSection.css";  // ✅ Correct path
 import "./components/SubCallout/SubtextCallout.css";  // ✅ Correct path

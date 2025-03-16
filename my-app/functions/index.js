@@ -19,11 +19,17 @@
 // });
 import { onRequest } from "firebase-functions/v2/https";
 import { defineSecret } from "firebase-functions/params";
-import admin from "firebase-admin";
+import { getApps, initializeApp } from "firebase-admin/app";
+import { getFirestore } from "firebase-admin/firestore";
 import { OpenAI } from "openai";
 import cors from "cors";
 
-admin.initializeApp();
+if (!getApps().length) {
+  initializeApp({
+    databaseAuthVariableOverride: null, // ✅ Ensures Remote Config isn't auto-loaded
+  });
+}
+const db = getFirestore();
 
 const OPENAI_API_KEY = defineSecret("OPENAI_API_KEY");
 const corsMiddleware = cors({ origin: true }); // ✅ Correct CORS middleware usage
