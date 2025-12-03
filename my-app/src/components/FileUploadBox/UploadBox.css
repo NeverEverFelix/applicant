@@ -1,0 +1,46 @@
+.upload-box{
+    width: 638px; /* Matches your design */
+    height: 192px; /* Adjust this based on your UI */
+    border: 1px dashed rgba(0, 0, 0, 0.24); /* Dashed border */
+    border-radius: 12px; /* Rounded corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: transparent;
+    top: 500px; /* Adjust this number to move up/down */
+    transform: translateY(-145%);
+    cursor: pointer;
+    transition: border 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.upload-text {
+    color: rgba(0, 0, 0, 0.24);
+    font-size: 14px;
+    line-height:48px;
+    font-family: "Hero Section Font", sans-serif;
+    font-weight: 500;
+}
+.arrow-icon{
+width: 10px;
+height: 10px;
+margin-right:6px;
+}
+
+.upload-box:not(.file-uploaded):hover {
+    border: 2px solid #0068F4; /* Solid blue border */
+}
+
+/* Change text color on hover */
+.upload-box:hover .upload-text{
+    color: #0068F4;
+}
+
+.upload-box.file-uploaded .upload-text {
+    color: #0068F4; /* Blue text */
+}
+
+.upload-box.dragging {
+    border: 2px solid #0068F4;
+    background-color: rgba(0, 104, 244, 0.1); /* Light blue background */
+}
