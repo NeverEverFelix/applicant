@@ -1,0 +1,21 @@
+.logIn-container {
+width: 588px;
+height: 992px;
+color: #0000;
+corner-radius: 62px;
+}
+.login-assest-container{
+width: 804px;
+height: 902px;
+border-radius: 62px;
+}
+.email {
+width: 403px;
+height:48px;
+color: #151515;
+}
+.continue{
+width:403px;
+height:48px;
+color:#0068F4;
+}
